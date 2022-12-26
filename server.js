@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./public/images/")
+    cb(null, "./public/uploads/")
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
@@ -49,7 +49,7 @@ app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   let images = []
-  fs.readdir("./public/images/", (err, files) => {
+  fs.readdir("./public/uploads/", (err, files) => {
     if(!err){
       files.forEach(file => {
         images.push(file);
@@ -75,7 +75,7 @@ app.post("/upload", (req, res) => {
   })  
 })
 
-app.post("/delete", (req, res) => {
+app.put("/delete", (req, res) => {
   const deleteImages = req.body.deleteImages
 
   if(deleteImages == ""){
@@ -83,7 +83,7 @@ app.post("/delete", (req, res) => {
     res.status(400).end()
   } else {
     deleteImages.forEach( image => {
-      unlinkFile("./public/images/" + image);
+      unlinkFile("./public/uploads/" + image);
     })
     res.statusMessage = "Succesfully deleted";
     res.status(200).end()
