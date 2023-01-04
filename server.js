@@ -35,7 +35,7 @@ const upload = multer({
   }
 }).any()
 
-const port = `0.0.0.0:${process.env.PORT}` || 3000;
+const port = `0.0.0.0:$PORT` || 3000;
 
 const app = express();
 
