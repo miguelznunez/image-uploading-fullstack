@@ -4,7 +4,6 @@ const path = require("path")
 const fs = require("fs");
 const util = require("util");
 const unlinkFile = util.promisify(fs.unlink);
-const port = process.env.PORT || 3000;
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -15,14 +14,6 @@ const storage = multer.diskStorage({
     cb(null, uniqueSuffix + path.extname(file.originalname))
   }
 })
-
-const upload = multer({ 
-  storage: storage,
-  limits: { fileSize: 1000000 },
-  fileFilter: function (req, file, cb) {
-    checkFileType(file, cb)
-  }
-}).any()
 
 function checkFileType(file, cb){
   const filetypes = /jpeg|png|jpg|gif/
@@ -35,6 +26,16 @@ function checkFileType(file, cb){
     cb("Please upload images only")
   }
 }
+
+const upload = multer({ 
+  storage: storage,
+  limits: { fileSize: 1000000 },
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb)
+  }
+}).any()
+
+const port = process.env.PORT || 3000;
 
 const app = express();
 

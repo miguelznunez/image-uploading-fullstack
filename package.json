@@ -1,8 +1,8 @@
 {
-  "name": "image-upload",
+  "name": "image-uploading-with-node",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
     "server": "nodemon server.js"
