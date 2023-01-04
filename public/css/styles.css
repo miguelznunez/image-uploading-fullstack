@@ -40,11 +40,11 @@ button {
   padding-bottom: 10px;
 }
 
-.header h2{
+.header h2 {
   min-width: fit-content;
 }
 
-.server-message{
+.server-message {
   width: 100%;
   padding: 16px;
   border-radius: 5px;
@@ -86,7 +86,10 @@ button {
   gap: 15px;
   position: relative;
   border-radius: 5px;
+<<<<<<< HEAD
   background-color: white;
+=======
+>>>>>>> c4331df615249ab867cae84e2d3aebfc960dc832
   border: 1px dotted black;
 }
 
