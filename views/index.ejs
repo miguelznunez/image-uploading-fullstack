@@ -129,8 +129,9 @@
       displayQueuedImages()
     })
 
-    inputDiv.addEventListener("drop", () => {
-      let file = input.files
+    inputDiv.addEventListener("drop", (e) => {
+      e.preventDefault()
+      let file = e.dataTransfer.files
       for (let i = 0; i < file.length; i++) {
         if (!file[i].type.match("image")) continue; // only photos
         
