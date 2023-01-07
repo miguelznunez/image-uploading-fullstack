@@ -121,7 +121,7 @@
     }
 
     input.addEventListener("change", () => {
-      let files = input.files;
+      const files = input.files;
       for (let i = 0; i < files.length; i++) {
         queuedImagesArray.push(files[i])
       }
@@ -131,7 +131,7 @@
 
     inputDiv.addEventListener("drop", (e) => {
       e.preventDefault()
-      let files = e.dataTransfer.files
+      const files = e.dataTransfer.files
       for (let i = 0; i < files.length; i++) {
         if (!files[i].type.match("image")) continue; // only photos
         
